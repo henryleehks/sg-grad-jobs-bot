@@ -204,16 +204,16 @@ def format_jobs(jobs: list[Job]) -> str:
     if not jobs:
         return "No fresh SG graduate Software/DevOps roles found right now. Try again later."
 
-    lines = ["*Fresh Graduate SE / DevOps roles in Singapore*", ""]
+    lines = ["Fresh Graduate SE / DevOps roles in Singapore", ""]
     for idx, job in enumerate(jobs, start=1):
         when = job.posted_at.date().isoformat() if job.posted_at else "Unknown date"
         lines.append(
-            f"{idx}. *{job.title}*\n"
-            f"   - Company: {job.company}\n"
-            f"   - Location: {job.location}\n"
-            f"   - Source: {job.source}\n"
-            f"   - Posted: {when}\n"
-            f"   - Apply: {job.url}"
+            f"{idx}. {job.title}\n"
+            f"Company: {job.company}\n"
+            f"Location: {job.location}\n"
+            f"Source: {job.source}\n"
+            f"Posted: {when}\n"
+            f"Apply: {job.url}"
         )
     return "\n\n".join(lines)
 
