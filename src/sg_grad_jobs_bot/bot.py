@@ -52,7 +52,15 @@ def run() -> None:
     app.add_handler(CommandHandler("search", search))
 
     logger.info("Bot is running...")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    try:
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
+    except RuntimeError as exc:
+        # Work around event-loop bootstrap differences seen on some Python 3.14 setups.
+        if "no running event loop" not in str(exc).lower():
+            raise
+        logger.warning("Retrying run_polling with an explicit event loop: %s", exc)
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":

@@ -22,6 +22,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+> Recommended: Python 3.10+ (tested broadly on 3.10-3.14 with current dependencies).
+
 Create `.env`:
 
 ```bash
@@ -40,6 +42,11 @@ Commands:
 
 - `/start`
 - `/search`
+
+### If you hit a startup traceback on Python 3.14
+
+- Upgrade dependencies: `pip install -U -r requirements.txt`
+- This repo pins `python-telegram-bot==22.7`, which includes newer Python 3.14 compatibility improvements.
 
 ## Run as CLI
 
