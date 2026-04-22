@@ -35,7 +35,7 @@ MAX_RESULTS=20
 ## Run as Telegram bot
 
 ```bash
-PYTHONPATH=src python -m sg_grad_jobs_bot.bot
+PYTHONPATH=src .venv/bin/python -m sg_grad_jobs_bot.bot
 ```
 
 Commands:
